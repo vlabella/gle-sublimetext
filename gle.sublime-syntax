@@ -1,0 +1,185 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: GLE
+file_extensions: [gle, gli]
+
+scope: source.gle
+version: 2
+
+contexts:
+  # The prototype context is prepended to all contexts but those setting
+  # meta_include_prototype: false.
+  prototype:
+    - include: comments
+
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: keywords
+    - include: numbers
+    - include: strings
+
+  keywords:
+    # Keywords are if, else for and while.
+    # Note that blackslashes don't need to be escaped within single quoted
+    # strings in YAML. When using single quoted strings, only single quotes
+    # need to be escaped: this is done by using two single quotes next to each
+    # other.
+    # commands
+    - match: '(?i)\b(add|aline|amove|arc|arcto|arrow|auto|bar|begin|bevel|bezier|bigfile|bitmap|bitmap_info|both|box|butt|cap|center|circle|clip|closepath|col|color|
+              |comment_char|comment|command|compact|curve|dashlen|data|define|default|dist|dpoints|draw|dsubticks|dticks|ellipse|elliptical_arc|elliptical_narc|else|end|err|
+              |errdown|errright|errup|errwidth|fill|font|for|from|fullsize|graph|grestore|grid|gsave|herr|herrleft|herrwidth|hscale|if|include|join|just|justify|key|
+              |left|let|line|local|lwidth|marker|max|mdata|min|mitre|msize|name|narc|next|nobox|nofirst|nolast|nomiss|nsteps|nticks|off|offset|origin|path|pos|position|
+              |postscript|psbbtweak|pscomment|rad|radius|rbezier|return|reverse|right|rline|rmove|rotate|rotate|round|save|scale|sep|set|shift|size|smooth|smoothm|square|
+              |start|step|step|stroke|sub|svg_smooth|table|text|to|then|title|translate|vscale|while|width|write|xg|xgmax|xgmin|xpos|yg|ygmax|ygmin|ypos|fclose|fopen|fread|ftokenizer|until)\b'
+      scope: entity.name.function
+    # new colors
+    - match: '(?i)\b(aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|
+              |chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkkhaki|
+              |darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkturquoise|
+              |darkviolet|deeppink|deepskyblue|dimgray|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|
+              |goldenrod|gray|green|greenyellow|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|
+              |lightblue|lightcoral|lightcyan|lightgoldenrodyelow|lightgray|lightgreen|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|
+              |lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|
+              |mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|
+              |olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|
+              |powderblue|purple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|
+              |snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen)\b'
+      scope:  keyword.other
+      #old colors
+    - match: '(?i)\b(bakers_chocolate|blue_violet|brass|bright_gold|bronze|bronze_ii|brown_web|cadet_blue|cool_copper|copper|
+            |corn_flower_blue|dark_brown|dark_green|dark_green_copper|dark_olive_green|dark_orchid|dark_purple|dark_slate_blue|
+            |dark_slate_gray|dark_slate_grey|dark_tan|dark_turquoise|dark_wood|dim_gray|dim_grey|dusty_rose|feldspar|forest_green|
+            |forest_green_web|gray_web|green_copper|green_yellow|grey|grey1|grey10|grey20|grey30|grey40|grey5|grey60|
+            |grey70|grey80|grey90|grey50|grey_web|hunter_green|indian_red|lawn_green|light_blue|light_gray|light_grey|
+            |light_steel_blue|light_wood|lime_green|mandarian_orange|maroon_web|medium_aquamarine|medium_blue|medium_forest_green|
+            |medium_goldenrod|medium_orchid 0|medium_sea_green|medium_slate_blue|medium_spring_greeen|medium_turquoise|medium_violet_red|
+            |medium_wood|midnight_blue|navy_blue|neon_blue|neon_pink|new_midnight_blue|new_tan|old_gold|orange_red|orange_web|
+            |pale_green|pink_web|quartz|rich_blue|scarlet|sea_green|semi_sweet_chocolate|silver_web|sky_blue|slate_blue|spicy_pink|
+            |spring_green|steel_blue|summer_sky|tan_color|very_dark_brown|very_light_gray|very_light_grey|violet_red|violet_web|yellow_green)\b'
+      scope:  keyword.other
+    # math functions
+    - match: '(?i)\b(abs|acos|acosh|acot|acoth|acsc|asec|asech|asin|asinh|atan|atanh|
+              |cos|cosh|cot|coth|csc|csch|erf|exp|fix|int|log|log10|rnd|sdiv|sec|sech|sgn|sin|sinh|sqr|sqrt|tan|tanh|todeg|torad|
+              |associated_laguerre|spherical_harmonic|factorial|double_factorial|hermite|associated_legendre|bessel_first|bessel_second|
+              |airy_first|airy_second|chebyshev_first|chebyshev_second)\b'
+      scope: support.function
+    # axis commands
+    - match: '(?i)\b([xy]2*axis|[xy]2*labels|[xy]2*names|[xy]2*places|[xy]2*side|[xy]2*subticks|[xy]2*ticks|[xy]2*title)\b'
+      scope: support.type
+    # column ids and data ranges
+    - match: '(?i)(\b(d[\d]+|c[\d}+])\b)|(d\[[^\]]+\])'
+      scope: variable.parameter
+    # positions or justifications
+    - match: '(?i)\b(tl|tc|tr|lc|cc|rc|bl|bc|br)\b'
+      scope: keyword.operator
+    # begin end group names
+    - match: '(?i)\b(layer|translate|rotate)\b'
+      scope: keyword.control
+    # constants
+    - match: '(?i)\b(pi|two_pi|root_pi|half_pi|root_2|root_3|_e_)\b'
+      scope: constant.language
+    # markers
+    - match: '(?i)\b(triangle|wtriangle|ftriangle|square|wsquare|fsquare|circle|wcircle|fcircle|
+            |diamond|wdiamond|fdiamond|cross|plus|minus|asterisk|odot|ominus|oplus|otimes|star|star2|
+            |star3|star4|flower|club|heart|spade|dag|ddag|snake|dot|handpen|letter|phone|plane|scircle|
+            |ssquare|trianglez|diamondz)\b'
+      scope: variable.parameter
+    # set XXXX
+    - match: '(?i)\b(hei|font|justify|just|color|background|dashlen|dash|fill|pattern|
+            |fillmethod|ldist|lstyle|lwidth|join|cap|fontlwidth|texscale|texlabels|arrowstyle|
+            |arrowtip|arrowsize|arrowangle|imageformat|titlescale|atitlescale|alabelscale|ticksscale|atitledist|alabeldis)\b'
+      scope: variable.parameter
+    # fonts
+    - match: '(?i)\b(texcmss|texcmssb|texcmr)\b'
+      scope: variable.parameter
+    # logical operators
+    - match: '(<\=|>\=|\=|<|>|\=|<>)'
+      scope: keyword.operator
+    # operators
+    - match: '(\+|\-|/|%|\^|\*|\+\=|\-\=|\*\=|/\=)'
+      scope: keyword.operator
+    # user defined functions
+    - match: 'sub \b[A-Za-z0-9]*\b'
+      scope: markup.italic
+
+  numbers:
+    - match: '\b((0(x|X)[0-9a-fA-F]*(\.[0-9a-fA-F]+p-?\d+)?)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([fF]|(l{1,2}|L{1,2})[uU]?|[uU](l{0,2}|L{0,2}))?\b'
+      scope: constant.numeric
+
+  variables:
+    - match: '\bg[A-Z]\w*\b'
+      scope: variable
+
+    - match: '\bs[A-Z]\w*\b'
+      scope: variable
+
+  strings:
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character.
+    - match: '"'
+      scope: punctuation.definition.string.begin
+      push: inside_string
+
+  inside_string:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double
+    - match: '\.'
+      scope: constant.character.escape
+    - match: '"'
+      scope: punctuation.definition.string.end
+      pop: true
+
+  comments:
+    # Comments begin with a '!' and finish at the end of the line.
+    - match: '!'
+      scope: punctuation.definition.comment
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.double-slash
+        - match: $\n?
+          pop: true
+
+
+    # function:
+    # - match: '(?i)(\b\([^\)]+\)\b'
+    #   push:
+    #     - meta_content_scope: meta.function
+    #     - include: attributes
+    #     - include: comments
+    #     #- match: (?i)\bfunction\b
+    #     #  scope: keyword.declaration.function.php
+    #     - match: '&'
+    #       scope: storage.modifier.reference.php
+    #     # https://wiki.php.net/rfc/constructor_promotion
+    #     - match: __construct\b
+    #       scope: entity.name.function.php support.function.magic.php
+    #       push:
+    #         - match: (?=\()
+    #           set:
+    #             - match: \(
+    #               scope: punctuation.section.group.begin.php
+    #               set:
+    #                 - meta_scope: meta.function.parameters.php meta.group.php
+    #                 - match: '{{visibility_modifier}}'
+    #                   scope: storage.modifier.php
+    #                 - include: function-parameters
+    #         # Exit on unexpected content
+    #         - match: (?=\S)
+    #           pop: 1
+    #     - match: '(__(?:callStatic|call|construct|destruct|get|set|isset|unset|toString|clone|set_state|sleep|wakeup|autoload|invoke|debugInfo))\b'
+    #       scope: entity.name.function.php support.function.magic.php
+    #     - match: '{{identifier}}'
+    #       scope: entity.name.function.php
+    #     # Lookahead is used here to prevent doubling up of meta.function and meta.function.parameters
+    #     - match: (?=\()
+    #       set:
+    #         - match: \(
+    #           scope: meta.function.parameters.php meta.group.php punctuation.section.group.begin.php
+    #           set: function-parameters
+    #     # Exit on unexpected content
+    #     - match: (?=\S)
+    #       pop: 1
+
+
