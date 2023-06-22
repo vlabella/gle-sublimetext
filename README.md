@@ -1,5 +1,5 @@
 # gle-sublimetext
-Syntax highlighting for Sublime Text Editor for the GLE Language
+Syntax highlighting for Sublime Text Editor for the [GLE](https://glx.sourceforge.io) Programming Language.
 
 
 # Installation 
