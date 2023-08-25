@@ -33,7 +33,7 @@ contexts:
               |left|let|line|local|lwidth|marker|max|mdata|min|mitre|msize|name|narc|next|nobox|nofirst|nolast|nomiss|nsteps|nticks|off|offset|origin|path|pos|position|
               |postscript|psbbtweak|pscomment|rad|radius|rbezier|return|reverse|right|rline|rmove|rotate|rotate|round|save|scale|sep|set|shift|size|smooth|smoothm|square|
               |start|step|step|stroke|sub|svg_smooth|table|text|to|then|title|translate|vscale|while|width|write|xg|xgmax|xgmin|xpos|yg|ygmax|ygmin|ypos|fclose|fopen|fread|ftokenizer|until)\b'
-      scope: entity.name.function
+      scope: entity.name.function.gle
     # new colors
     - match: '(?i)\b(aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|
               |chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkkhaki|
@@ -46,7 +46,7 @@ contexts:
               |olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|
               |powderblue|purple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|
               |snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen)\b'
-      scope:  keyword.other
+      scope:  keyword.other.gle
       #old colors
     - match: '(?i)\b(bakers_chocolate|blue_violet|brass|bright_gold|bronze|bronze_ii|brown_web|cadet_blue|cool_copper|copper|
             |corn_flower_blue|dark_brown|dark_green|dark_green_copper|dark_olive_green|dark_orchid|dark_purple|dark_slate_blue|
@@ -58,86 +58,86 @@ contexts:
             |medium_wood|midnight_blue|navy_blue|neon_blue|neon_pink|new_midnight_blue|new_tan|old_gold|orange_red|orange_web|
             |pale_green|pink_web|quartz|rich_blue|scarlet|sea_green|semi_sweet_chocolate|silver_web|sky_blue|slate_blue|spicy_pink|
             |spring_green|steel_blue|summer_sky|tan_color|very_dark_brown|very_light_gray|very_light_grey|violet_red|violet_web|yellow_green)\b'
-      scope:  keyword.other
+      scope:  keyword.other.gle
     # math functions
     - match: '(?i)\b(abs|acos|acosh|acot|acoth|acsc|asec|asech|asin|asinh|atan|atanh|
               |cos|cosh|cot|coth|csc|csch|erf|exp|fix|int|log|log10|rnd|sdiv|sec|sech|sgn|sin|sinh|sqr|sqrt|tan|tanh|todeg|torad|
               |associated_laguerre|spherical_harmonic|factorial|double_factorial|hermite|associated_legendre|bessel_first|bessel_second|
               |airy_first|airy_second|chebyshev_first|chebyshev_second)\b'
-      scope: support.function
+      scope: support.function.gle
     # axis commands
     - match: '(?i)\b([xy]2*axis|[xy]2*labels|[xy]2*names|[xy]2*places|[xy]2*side|[xy]2*subticks|[xy]2*ticks|[xy]2*title)\b'
-      scope: support.type
+      scope: support.type.gle
     # column ids and data ranges
     - match: '(?i)(\b(d[\d]+|c[\d}+])\b)|(d\[[^\]]+\])'
-      scope: variable.parameter
+      scope: variable.parameter.gle
     # positions or justifications
     - match: '(?i)\b(tl|tc|tr|lc|cc|rc|bl|bc|br)\b'
-      scope: keyword.operator
+      scope: keyword.operator.gle
     # begin end group names
     - match: '(?i)\b(layer|translate|rotate)\b'
-      scope: keyword.control
+      scope: keyword.control.gle
     # constants
     - match: '(?i)\b(pi|two_pi|root_pi|half_pi|root_2|root_3|_e_)\b'
-      scope: constant.language
+      scope: constant.language.gle
     # markers
     - match: '(?i)\b(triangle|wtriangle|ftriangle|square|wsquare|fsquare|circle|wcircle|fcircle|
             |diamond|wdiamond|fdiamond|cross|plus|minus|asterisk|odot|ominus|oplus|otimes|star|star2|
             |star3|star4|flower|club|heart|spade|dag|ddag|snake|dot|handpen|letter|phone|plane|scircle|
             |ssquare|trianglez|diamondz)\b'
-      scope: variable.parameter
+      scope: variable.parameter.gle
     # set XXXX
     - match: '(?i)\b(hei|font|justify|just|color|background|dashlen|dash|fill|pattern|
             |fillmethod|ldist|lstyle|lwidth|join|cap|fontlwidth|texscale|texlabels|arrowstyle|
             |arrowtip|arrowsize|arrowangle|imageformat|titlescale|atitlescale|alabelscale|ticksscale|atitledist|alabeldis)\b'
-      scope: variable.parameter
+      scope: variable.parameter.gle
     # fonts
     - match: '(?i)\b(texcmss|texcmssb|texcmr)\b'
-      scope: variable.parameter
+      scope: variable.parameter.gle
     # logical operators
     - match: '(<\=|>\=|\=|<|>|\=|<>)'
-      scope: keyword.operator
+      scope: keyword.operator.gle
     # operators
     - match: '(\+|\-|/|%|\^|\*|\+\=|\-\=|\*\=|/\=)'
-      scope: keyword.operator
+      scope: keyword.operator.gle
     # user defined functions
     - match: 'sub \b[A-Za-z0-9]*\b'
-      scope: markup.italic
+      scope: markup.italic.gle
 
   numbers:
     - match: '\b((0(x|X)[0-9a-fA-F]*(\.[0-9a-fA-F]+p-?\d+)?)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([fF]|(l{1,2}|L{1,2})[uU]?|[uU](l{0,2}|L{0,2}))?\b'
-      scope: constant.numeric
+      scope: constant.numeric.gle
 
   variables:
     - match: '\bg[A-Z]\w*\b'
-      scope: variable
+      scope: variable.gle
 
     - match: '\bs[A-Z]\w*\b'
-      scope: variable
+      scope: variable.gle
 
   strings:
     # Strings begin and end with quotes, and use backslashes as an escape
     # character.
     - match: '"'
-      scope: punctuation.definition.string.begin
+      scope: punctuation.definition.string.begin.gle
       push: inside_string
 
   inside_string:
     - meta_include_prototype: false
-    - meta_scope: string.quoted.double
+    - meta_scope: string.quoted.double.gle
     - match: '\.'
-      scope: constant.character.escape
+      scope: constant.character.escape.gle
     - match: '"'
-      scope: punctuation.definition.string.end
+      scope: punctuation.definition.string.end.gle
       pop: true
 
   comments:
     # Comments begin with a '!' and finish at the end of the line.
     - match: '!'
-      scope: punctuation.definition.comment
+      scope: punctuation.definition.comment.gle
       push:
         # This is an anonymous context push for brevity.
-        - meta_scope: comment.line.double-slash
+        - meta_scope: comment.line.double-slash.gle
         - match: $\n?
           pop: true
 
@@ -145,38 +145,38 @@ contexts:
     # function:
     # - match: '(?i)(\b\([^\)]+\)\b'
     #   push:
-    #     - meta_content_scope: meta.function
+    #     - meta_content_scope: meta.function.gle
     #     - include: attributes
     #     - include: comments
     #     #- match: (?i)\bfunction\b
-    #     #  scope: keyword.declaration.function.php
+    #     #  scope: keyword.declaration.function.php.gle
     #     - match: '&'
-    #       scope: storage.modifier.reference.php
+    #       scope: storage.modifier.reference.php.gle
     #     # https://wiki.php.net/rfc/constructor_promotion
     #     - match: __construct\b
-    #       scope: entity.name.function.php support.function.magic.php
+    #       scope: entity.name.function.php support.function.magic.php.gle
     #       push:
     #         - match: (?=\()
     #           set:
     #             - match: \(
-    #               scope: punctuation.section.group.begin.php
+    #               scope: punctuation.section.group.begin.php.gle
     #               set:
-    #                 - meta_scope: meta.function.parameters.php meta.group.php
+    #                 - meta_scope: meta.function.parameters.php meta.group.php.gle
     #                 - match: '{{visibility_modifier}}'
-    #                   scope: storage.modifier.php
+    #                   scope: storage.modifier.php.gle
     #                 - include: function-parameters
     #         # Exit on unexpected content
     #         - match: (?=\S)
     #           pop: 1
     #     - match: '(__(?:callStatic|call|construct|destruct|get|set|isset|unset|toString|clone|set_state|sleep|wakeup|autoload|invoke|debugInfo))\b'
-    #       scope: entity.name.function.php support.function.magic.php
+    #       scope: entity.name.function.php support.function.magic.php.gle
     #     - match: '{{identifier}}'
-    #       scope: entity.name.function.php
+    #       scope: entity.name.function.php.gle
     #     # Lookahead is used here to prevent doubling up of meta.function and meta.function.parameters
     #     - match: (?=\()
     #       set:
     #         - match: \(
-    #           scope: meta.function.parameters.php meta.group.php punctuation.section.group.begin.php
+    #           scope: meta.function.parameters.php meta.group.php punctuation.section.group.begin.php.gle
     #           set: function-parameters
     #     # Exit on unexpected content
     #     - match: (?=\S)
